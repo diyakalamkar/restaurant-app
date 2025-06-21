@@ -276,10 +276,10 @@ def send_reset_link(request: Request, email: str = Form(...), role: str = Form(.
     link = f"http://127.0.0.1:8000/reset-password/{role}/{token}"
     msg = MIMEText(f"Reset your password: {link}")
     msg['Subject'] = 'Reset Password'
-    msg['From'] = 'diyaisworking@gmail.com'
+    msg['From'] = 'yourmail@gmail.com'
     msg['To'] = email
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login("diyaisworking@gmail.com", "umfh fhks yzvz evdl")
+        server.login("yourmail@gmail.com", "your mail password")
         server.send_message(msg)
     return templates.TemplateResponse("login.html", {"request": request, "message": "Password reset link sent."})
 
