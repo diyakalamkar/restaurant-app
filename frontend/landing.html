@@ -1,0 +1,39 @@
+<!-- <!DOCTYPE html>
+<html>
+<head><title>Welcome</title></head>
+<body>
+  <h2>Welcome</h2>
+  {% if error %}
+  <div style="color: red; font-weight: bold; margin-bottom: 10px;">
+    {{ error }}
+  </div>
+  {% endif %}
+
+  <form action="/landing" method="post">
+    <button type="submit">Server Dashboard</button> &nbsp;
+    <button type="submit">Cashier Dashboard</button>
+  </form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landing</title>
+</head>
+<body>
+  <h2>Welcome!</h2>
+
+  {% if error %}
+  <p style="color: red;">{{ error }}</p>
+  {% endif %}
+
+  <form action="/access-dashboard" method="post">
+    <input type="hidden" name="token" value="{{ token }}">
+    <button type="submit" name="target" value="server">Server Dashboard</button> &nbsp;
+    <button type="submit" name="target" value="cashier">Cashier Dashboard</button>
+  </form>
+</body>
+</html>
+

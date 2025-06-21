@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <h2>Login</h2>
+
+  <!-- Login Form -->
+  <form method="post" action="/login">
+    Email: <input type="email" name="email" id="loginEmail" required><br>
+    Password: <input type="password" name="password" required><br>
+    Role:
+    <select name="role" id="loginRole" required>
+    <option value="server">Server</option>
+    <option value="cashier">Cashier</option>
+    </select>
+    <br>
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Forgot Password Form
+  <form method="post" action="/send-reset-link">
+    <input type="hidden" name="email" id="resetEmail">
+    <select name="role" required>
+    <option value="server">Server</option>
+    <option value="cashier">Cashier</option>
+    </select>
+    <button type="submit" onclick="copyEmailToReset()">Forgot Password</button>
+  </form> -->
+
+  <!-- Forgot Password Form -->
+  <form method="post" action="/send-reset-link">
+    <input type="hidden" name="email" id="resetEmail">
+    <input type="hidden" name="role" id="resetRole">
+    <button type="submit" onclick="copyLoginFields()">Forgot Password</button>
+  </form>
+
+  <!-- Display messages -->
+  {% if error %}
+    <div style="color: red; font-weight: bold;">{{ error }}</div>
+  {% endif %}
+  {% if message %}
+    <div style="color: green; font-weight: bold;">{{ message }}</div>
+  {% endif %}
+
+  <script>
+    function copyEmailToReset() {
+      const emailInput = document.querySelector('input[name="email"]');
+      const resetInput = document.getElementById('resetEmail');
+      if (emailInput && resetInput) {
+        resetInput.value = emailInput.value;
+      }
+    }
+
+    function copyLoginFields() {
+      const emailInput = document.getElementById('loginEmail');
+      const roleSelect = document.getElementById('loginRole');
+      document.getElementById('resetEmail').value = emailInput.value;
+      document.getElementById('resetRole').value = roleSelect.value;
+    }
+  </script>
+</body>
+</html>
+
