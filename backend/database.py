@@ -7,7 +7,7 @@ import pyodbc
 
 connection_string = quote_plus(
     "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=localhost\\DIYASQLSERVER;"
+    "SERVER=localhost\\SQLSERVER;" #server path
     "DATABASE=restaurantdb;"
     "UID=sa;"
     "PWD=diya;"
